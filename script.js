@@ -34,6 +34,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function placeMines() {
     // Randomly places mines on board
+    let placedMines = 0;
+    while (placedMines < minesCount) {
+      const row = Math.floor(Math.random() * rows);
+      const col = Math.floor(Math.random() * cols);
+      if (!cells[row][col].classList.contains("mine")) {
+        cells[row][col].classList.add("mine");
+        placedMines++;
+      }
+    }
   }
 
   function revealCell(cell) {
