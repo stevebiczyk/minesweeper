@@ -133,7 +133,13 @@ document.addEventListener("DOMContentLoaded", () => {
     // Check if the player has won
   }
 
-  function gameOver() {
-    // Game over
+  function endGame(won) {
+    gameOver = true;
+    revealAllMines();
+    const message = won ? "Congratulations, you won!" : "Game Over!";
+    // Use the showMessage function to display the message
+    alert(message);
   }
+
+  createBoard();
 });
