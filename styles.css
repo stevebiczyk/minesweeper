@@ -5,6 +5,32 @@
   gap: 2px;
 }
 
+/* Styles for each cell in the grid */
+.cell {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #e0e0e0;
+  cursor: pointer;
+  font-size: 18px;
+  user-select: none;
+}
+
+/* Styles for revealed cells */
+.cell.revealed {
+  background-color: #b0c4de;
+  cursor: default;
+}
+
+/* Styles for mine cells */
+.cell.mine {
+  background-color: #f00;
+  color: #fff;
+}
+
 #game-status {
   margin-bottom: 10px;
   font-size: 18px;

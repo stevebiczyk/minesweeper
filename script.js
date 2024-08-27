@@ -149,4 +149,5 @@ document.addEventListener("DOMContentLoaded", () => {
   resetButton.addEventListener("click", resetBoard);
 
   // Initialize the game board when the page loads
+  createBoard();
 });
