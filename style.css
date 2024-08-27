@@ -1,0 +1,22 @@
+#game-board {
+  display: grid;
+  grid-template-rows: repeat(10, 30px);
+  grid-template-columns: repeat(10, 30px);
+  gap: 2px;
+}
+
+#game-status {
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+#reset-button {
+  padding: 5px 10px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#message {
+  margin-left: 20px;
+  font-weight: bold;
+}
