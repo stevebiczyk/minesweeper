@@ -91,6 +91,30 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function revealEmptyCells(row, col) {
     // Reveal all empty cells around the cell
+    for (let i = -1; i <= 1; i++) {
+      for (let j = -1; j <= 1; j++) {
+        const r = row + i;
+        const c = col + j;
+        if (
+          r >= 0 &&
+          r < rows &&
+          c >= 0 &&
+          c < cols &&
+          !cells[r][c].classList.contains("revealed")
+        ) {
+          cells[r][c].classList.add("revealed");
+          if (!cells[r][c].classList.contains("mine")) {
+            const mines = countMines(r, c);
+            if (mines > 0) {
+              cells[r][c].textContent = mines;
+            } else {
+              // Instead of triggering a click event, call revealEmptyCells directly
+              revealEmptyCells(r, c);
+            }
+          }
+        }
+      }
+    }
   }
 
   function revealAllMines() {
