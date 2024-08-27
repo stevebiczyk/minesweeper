@@ -16,6 +16,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function createBoard() {
     // Create the game board
+    minesweeper.innerHTML = ""; // Clear any existing board content
+    for (let i = 0; i < rows; i++) {
+      cells[i] = [];
+      for (let j = 0; j < cols; j++) {
+        const cell = document.createElement("div");
+        cell.classList.add("cell");
+        cell.dataset.row = i;
+        cell.dataset.col = j;
+        cell.addEventListener("click", revealCell);
+        minesweeper.appendChild(cell);
+        cells[i][j] = cell;
+      }
+    }
+    placeMines();
   }
 
   function placeMines() {
