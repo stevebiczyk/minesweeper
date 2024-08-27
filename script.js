@@ -119,6 +119,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function revealAllMines() {
     // Reveal all mines on the board when the gane is over
+    for (let i = 0; i < rows; i++) {
+      for (let j = 0; j < cols; j++) {
+        if (cells[i][j].classList.contains("mine")) {
+          cells[i][j].classList.add("revealed");
+          cells[i][j].textContent = "💣"; // Use an emoji or any other representation for mines
+        }
+      }
+    }
   }
 
   function checkWin() {
