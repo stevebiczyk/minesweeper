@@ -45,8 +45,27 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  function revealCell(cell) {
+  function revealCell(event) {
     // Reveal the clicked cell
+    if (gameOver) return; // Do not reveal if game is over
+
+    const cell = event.target;
+    if (cell.classList.contains("revealed")) return; // Avoid revealing the same cell twice
+    cell.classList.add("revealed");
+
+    if (cell.classList.contains("mine")) {
+      cell.textContent = "💣";
+      endGame(false); // End game if a mine is clicked
+    } else {
+      const row = parseInt(cell.dataset.row);
+      const col = parseInt(cell.dataset.col);
+      const mines = countMines(row, col);
+      if (mines > 0) {
+        cell.textContent = mines;
+      } else {
+        revealAdjacentCells(row, col);
+      }
+    }
   }
 
   function countMines(row, col) {
