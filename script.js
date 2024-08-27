@@ -70,6 +70,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function countMines(row, col) {
     // Count the number of mines around the cell
+    let count = 0;
+    for (let i = -1; i <= 1; i++) {
+      for (let j = -1; j <= 1; j++) {
+        const r = row + i;
+        const c = col + j;
+        if (
+          r >= 0 &&
+          r < rows &&
+          c >= 0 &&
+          c < cols &&
+          cells[r][c].classList.contains("mine")
+        ) {
+          count++;
+        }
+      }
+    }
+    return count;
   }
 
   function revealEmptyCells(row, col) {
