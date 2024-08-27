@@ -137,9 +137,16 @@ document.addEventListener("DOMContentLoaded", () => {
     gameOver = true;
     revealAllMines();
     const message = won ? "Congratulations, you won!" : "Game Over!";
-    // Use the showMessage function to display the message
-    alert(message);
+    messageElement.textContent = message;
   }
 
-  createBoard();
+  // New function to reset the game board
+  function resetBoard() {
+    createBoard(); // Call the createBoard function to reset the board
+  }
+
+  // Event listener for reset button
+  resetButton.addEventListener("click", resetBoard);
+
+  // Initialize the game board when the page loads
 });
